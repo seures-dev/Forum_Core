@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - {{ super() }} - Sign in {% endblock %}
+
+{% block header %}
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="ui form-user center raised very padded text container segment">
+    <form class="ui form" action="/threads/{{ branch.thread_id }}/branches/{{ branch.branch_id }}/create-post" method="post">
+        <h4 class="ui dividing header">Create post into branch: "{{ branch.name }}"</h4>
+        {{ m.render_field(form.content) }}
+        {{ m.render_field(form.image) }}
+        {{ form.csrf_token }}
+        <button class="ui primary button" type="submit">Confirm</button>
+
+    </form>
+</div>
+
+{% endblock %}

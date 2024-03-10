@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - {{ super() }} Threads page{% endblock %}
+
+{% block header %}Welcome to the Threads page{% endblock %}
+
+{% block content %}
+    <div class="table-container">
+        <table class="threads-table">
+            <tr class="head-grid grid">
+                <td class="grid">Thread id</td>
+                <td class="grid">Name</td>
+                <td class="grid">Created</td>
+                <td class="grid">Author</td>
+                <td class="grid">Branch count</td>
+                {% if current_user.is_authenticated and current_user.access_level > 1 %}
+                    <td class="grid"></td>
+                {% endif %}
+            </tr>
+
+            {% for itm in threads %}
+                <tr class="grid">
+                    <td class="grid">{{ itm.thread_id }}</td>
+                    <td class="clickable-cell" data-href="/threads/{{ itm.thread_id }}">
+                        {{ itm.name }}
+                    </td>
+                    <td class="grid">{{ itm.created[:10] }}</td>
+                    <td class="grid"><a
+                            href="/user/{{ itm.creator.keys()|first }}">{{ users[itm.creator.keys()|first] }}</a></td>
+                    <td class="grid">{{ itm.branch_count }}</td>
+                    {% if current_user.is_authenticated and current_user.access_level > 1 %}
+                        <td class="grid">
+                            <a href="/threads/{{ itm.thread_id }}/delete">
+                                <img src="{{ url_for('static', filename='img/x_img.png') }}" alt="">
+                            </a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <h2></h2>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".clickable-cell").click(function () {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <nav class="page-navigation">
+            {% for i in range(1, page_count + 1) %}
+                <a href="/threads?offset={{ (i - 1) * 30 }}" class="page-btn">{{ i }}</a>
+            {% endfor %}
+        </nav>
+        <nav class="crete-btn">
+            <a href="/threads/create">Create thread</a>
+        </nav>
+    </div>
+{% endblock %}
+

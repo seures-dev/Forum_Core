@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - {{ super() }} - Sign in {% endblock %}
+
+{% block header %}
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="ui form-user center raised very padded text container segment">
+    <form class="ui form" action="/user/forgot" method="post">
+        <h4 class="ui dividing header">Forgot password</h4>
+        {{ m.render_field(form.email) }}
+        {{ form.csrf_token }}
+        <button class="ui primary button" type="submit">Confirm</button>
+
+    </form>
+</div>
+
+{% endblock %}

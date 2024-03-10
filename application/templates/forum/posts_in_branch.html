@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - {{ super() }} {{ branch.name }} {% endblock %}
+
+{% block header %}
+
+
+
+{% endblock %}
+
+{% block content %}
+    <div class="table-container">
+        <table class="thread-info" border="1">
+            <tr class="grid">
+                <td>Branch: {{ branch.name }}</td>
+                <td>{{ branch.branch_id }}</td>
+                <td>{{ branch.created[:10] }}</td>
+
+            </tr>
+        </table>
+        <nav class="crete-btn">
+            <a href="/threads/{{ branch.thread_id }}/branches/{{ branch.branch_id }}/create-post">Create post</a>
+        </nav>
+        {% if posts %}
+            <table class="branches-table" border="1">
+                <tr class="table-names grid">
+                    <td class="grid">Post id</td>
+                    <td class="grid">Author</td>
+                    <td class="grid">Content</td>
+                    <td class="grid">Created</td>
+                </tr>
+                {% for itm in posts %}
+                    <tr class="grid">
+                        <td class="grid">{{ itm.into_branch_id }}</td>
+
+                        <td class="grid">
+                            <a href="/user/{{ itm.creator.keys()|first }}">
+                                {{ users[itm.creator.keys()|first] }}
+                            </a>
+                        </td>
+                        <td class="grid grid-content">{{ itm.content }}</td>
+                        <td class="grid">{{ itm.created[:10] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <table class="branches-table" border="1">
+                <tr class="table-names grid">
+                    <td class="grid">No one has written here yet, be the first</td>
+                </tr>
+            </table>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <nav class="page-navigation">
+            {% for i in range(1, page_count + 1) %}
+                <a href="/threads/{{ branch.thread_id }}/branches/{{ branch.branch_id }}?offset={{ (i - 1) * 30 }}"
+                   class="page-btn">{{ i }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+{% endblock %}

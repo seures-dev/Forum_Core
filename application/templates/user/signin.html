@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - {{ super() }} - Sign in {% endblock %}
+
+{% block header %}
+
+
+{% endblock %}
+
+
+{% block content %}
+<div class="ui form-user center raised very padded text container segment">
+    <form class="ui form" action="/user/signin{{ '?next=' ~ next_page if next_page else '' }}" method="post">
+        <h4 class="ui dividing header">Login</h4>
+        {{ m.render_field(form.email) }}
+        {{ m.render_field(form.password) }}
+        {{ form.csrf_token }}
+        <button class="ui primary button" type="submit">Confirm</button>
+        <a href="/user/forgot" class="a-btn">
+            <div class="ui floated right basic red button">
+                I forgot my password
+            </div>
+        </a>
+
+
+        <a href="/user/signup" class="a-btn" >
+            <div class="ui floated left red button">
+                Registration
+            </div>
+        </a>
+
+
+    </form>
+</div>
+
+{% endblock %}

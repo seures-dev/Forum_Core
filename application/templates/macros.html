@@ -1,0 +1,44 @@
+{# application/templates/macros.html #}
+
+<!-- Highlight the current tab -->
+{% macro nav_link(endpoint, text) %}
+	{% if request.endpoint is not none %}
+		{% if request.endpoint.endswith(endpoint) %}
+		    <a class="active teal item" href="{{ url_for(endpoint) }}">{{ text }}</a>
+		{% else %}
+		    <a class="item" href="{{ url_for(endpoint) }}">{{ text }}</a>
+		{% endif %}
+	{% else %}
+    	<a class="item" href="{{ url_for(endpoint) }}">{{ text }}</a>
+	{% endif %}
+{% endmacro %}
+
+<!-- Render a WTForm form's field (with it's possible associated errors) from a WTForms form -->
+{% macro render_field(field) %}
+    <div class="field">
+         <label>{{ field.label }}</label>
+            {{ field(class_="field", placeholder=field.description) }}
+    </div>
+    {% if field.errors %}
+        <ul>
+            {% for error in field.errors %}
+                <li class="form-error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_modal_field(field) %}
+    <div class="field">
+         <label>{{ field.label }}</label>
+        {{ field(class_="field", placeholder=field.description,**{'v-model': field.name}) }}
+    </div>
+    {% if field.errors %}
+        <ul>
+            {% for error in field.errors %}
+                <li class="form-error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}

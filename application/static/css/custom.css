@@ -1,0 +1,169 @@
+/* Layout */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+#container {
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+#body {
+    margin: 20px;
+    min-height: 100%;
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Height of the footer */
+    text-align: center;
+}
+
+/* Forms */
+
+.form-user {
+    width: 33% !important;
+    margin: 0 auto !important;
+    margin-top: 10% !important;
+}
+
+.form-error {
+    color: #E50000 !important;
+}
+
+/* Flask flashes */
+
+.flash {
+    margin-right: 20px !important;
+}
+
+/* Errors */
+
+.error-box {
+    margin-top: 8%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #C3E8F0;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.navigation {
+    list-style: none;
+    /*padding: 16px 0;*/
+    margin: 0;
+    text-align: left;
+    background-color: #aaaaaa; /* Фон */
+}
+
+.header-nav {
+    display: flex;
+
+    padding: 5px 0;
+    margin: 0;
+    /*text-align: left;*/
+    background-color: #aaaaaa; /* Фон */
+}
+
+
+.navigation li {
+    display: inline-block;
+    padding-top: 10px; /* Расстояние между элементами навигации */
+    padding-bottom: 10px;
+    margin: 0;
+    /*border: 1px solid #ccc;*/
+
+}
+
+.right-menu {
+    display: inline-flex;
+    text-align: right;
+    padding-left: 160px;
+}
+
+.navigation a {
+    margin-top: 10px;
+    padding: 3% 150px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #222; /* Цвет ссылок */
+}
+
+.navigation ul {
+    margin-bottom: 0;
+}
+
+.navigation-btn-f {
+    margin-left: 0; /* Убираем правый отступ у последнего элемента */
+}
+
+.navigation li:last-child {
+    margin-right: 0; /* Убираем правый отступ у последнего элемента */
+}
+
+.a-btn {
+    text-decoration: none;
+}
+
+.page-navigation{
+    text-align: center;
+}
+.threads-table{
+    border: 2px solid white;
+
+}
+
+.head-grid{
+    border: 2px solid white;
+}
+.grid{
+    border: 1px solid white;
+}
+.grid:hover {
+    background-color: #8CDBED;
+}
+
+.page-btn{
+
+    padding: 5px 10px;
+    border: 1px solid aqua;
+    text-decoration: none;
+}
+.footer{
+    margin-top: 20px;
+    min-height: 100px;
+
+}
+
+.table-container{
+    margin: 1% 5%;
+}
+
+.td-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.clickable-cell{
+    cursor: pointer;
+}
+.grid-content{
+    max-width: 400px;
+    max-height: 400px;
+}
